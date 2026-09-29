@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarjeta de Presentacion 9x5cm</title>
+    <style>
+        /* Configuración exacta de tamaño para impresión */
+        @page {
+            size: 90mm 50mm;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f5f9;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact; /* Fuerza a las impresoras a imprimir los fondos */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding-top: 20px;
+        }
+
+        .card-container {
+            width: 90mm;
+            height: 50mm;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra solo para verla en pantalla, no afecta impresión */
+            page-break-after: always; /* Para que al imprimir, cada cara quede separada si es necesario */
+        }
+
+        /* --- FRENTE DE LA TARJETA --- */
+        .front {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 4mm 6mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 3mm solid #10b981; /* Verde tecnológico */
+        }
+
+        .info-side {
+            width: 55mm;
+        }
+
+        .name {
+            font-size: 11pt;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 0 0 2mm 0;
+            line-height: 1.1;
+        }
+
+        .title {
+            font-size: 8pt;
+            color: #38bdf8; /* Azul claro */
+            margin-bottom: 4mm;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            font-size: 6.5pt;
+            color: #cbd5e1; /* Gris claro */
+            line-height: 1.6;
+        }
+
+        .contact-info strong {
+            color: #10b981; /* Acentos en verde */
+        }
+
+        .qr-side {
+            width: 25mm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .qr-box {
+            width: 22mm;
+            height: 22mm;
+            background: #ffffff;
+            padding: 1mm;
+            border-radius: 2px;
+        }
+
+        .qr-box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .label-qr {
+            font-size: 5pt;
+            color: #94a3b8;
+            margin-top: 1.5mm;
+            font-weight: bold;
+        }
+
+        /* --- REVERSO DE LA TARJETA --- */
+        .back {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 5mm;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-right: 3mm solid #0284c7; /* Acento azul */
+        }
+
+        .hiro-side {
+            width: 35mm;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Aquí se reemplazó el cuadrado de CSS por el Marcador Hiro Real */
+        .hiro-marker img {
+            width: 31mm;
+            height: 31mm;
+            box-sizing: border-box; /* el padding entra dentro de los 31mm */
+            padding: 3mm;
+        }
+
+        .back-info {
+            width: 42mm;
+        }
+
+        .back-title {
+            font-size: 9pt;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 2mm;
+        }
+
+        .back-desc {
+            font-size: 6pt;
+            color: #cbd5e1;
+            line-height: 1.4;
+            margin-bottom: 3mm;
+        }
+
+        .extra-qr-container {
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+            background-color: rgba(255,255,255,0.05);
+            padding: 1.5mm;
+            border-radius: 4px;
+        }
+
+        .mini-qr {
+            width: 12mm;
+            height: 12mm;
+            background: white;
+            padding: 0.5mm;
+        }
+
+        .mini-qr img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .mini-qr-text {
+            font-size: 5pt; 
+            color: #38bdf8;
+            line-height: 1.2;
+        }
+        
+        /* Ocultar elementos extra al imprimir */
+        @media print {
+            body {
+                padding-top: 0;
+                gap: 0;
+            }
+            .card-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FRENTE DE LA TARJETA -->
+    <div class="card-container front">
+        <div class="info-side">
+            <h1 class="name">NOE UZIEL<br>MALDONADO QUINTANILLA</h1>
+            <div class="title">Futuro Ing. Informático</div>
+            
+            <div class="contact-info">
+                <strong>Tel:</strong> +52 492 218 93 53<br>
+                <strong>Email:</strong> uzielmalquint7@gmail.com<br>
+                <strong>Portafolio:</strong> github.com/Maldona12
+            </div>
+        </div>
+
+        <div class="qr-side">
+            <div class="qr-box">
+                <!-- Servidor generador de QR dinámico a la App RA -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maldona12.github.io/Tarjeta_Presentacion/" alt="QR App RA">
+            </div>
+            <div class="label-qr">ESCANEA PARA<br>VER APP EN RA</div>
+        </div>
+    </div>
+
+    <!-- REVERSO DE LA TARJETA -->
+    <div class="card-container back">
+        <div class="hiro-side">
+            <!-- Marcador Hiro Físico Real (Imagen oficial necesaria para que la cámara lo reconozca) -->
+            <div class="hiro-marker">
+                <img src="https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png" alt="Marcador Hiro">
+            </div>
+            <div class="label-qr" style="color: #cbd5e1;">Apunta tu cámara aquí</div>
+        </div>
+
+        <div class="back-info">
+            <div class="back-title">Más Información</div>
+            <div class="back-desc">
+                Una vez dentro de la aplicación, apunta la cámara al marcador de la izquierda para ver mi modelo 3D.
+            </div>
+
+            <div class="extra-qr-container">
+                <div class="mini-qr">
+                    <!-- QR hacia el portafolio -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://github.com/Maldona12" alt="QR Portafolio Directo">
+                </div>
+                <div class="mini-qr-text">
+                    <strong>Acceso directo:</strong><br>Repositorio y Proyectos
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
